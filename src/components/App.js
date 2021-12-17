@@ -23,11 +23,11 @@ const App = () => {
           <Login />
         </Route>
 
-        <PrivateRoute exact path="/view" >
+        <PrivateRoute  path="/view" >
           <View />
         </PrivateRoute>
 
-        <PrivateRoute exact path="/logout" >
+        <PrivateRoute path="/logout" >
           <Logout />
         </PrivateRoute>
 
