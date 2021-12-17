@@ -1,18 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import Article from './Article';
 import EditForm from './EditForm';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 const View = (props) => {
     const [articles, setArticles] = useState([]);
     const [editing, setEditing] = useState(false);
     const [editId, setEditId] = useState();
 
+    useEffect(() => {
+        axiosWithAuth()
+            .get()
+            .then(res => {
+                setArticles(res.data)
+            })
+    })
+
     const handleDelete = (id) => {
+        axiosWithAuth()
+            .delete(id)
+            .then(res => {
+                setArticles(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     const handleEdit = (article) => {
+        axiosWithAuth()
+            .put(`${editId}`, article)
+            .then(res => {
+                setArticles(res.data)
+            })
     }
 
     const handleEditSelect = (id)=> {
@@ -36,7 +58,7 @@ const View = (props) => {
                     })
                 }
             </ArticleContainer>
-            
+
             {
                 editing && <EditForm editId={editId} handleEdit={handleEdit} handleEditCancel={handleEditCancel}/>
             }
@@ -75,7 +97,7 @@ const ComponentContainer = styled.div`
     width: 80%;
     flex-direction: column;
     justify-content: center;
-    
+
 `
 
 const ContentContainer = styled.div`
