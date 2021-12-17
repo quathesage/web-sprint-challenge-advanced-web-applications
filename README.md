@@ -106,10 +106,10 @@ In this project, you will demonstrate your mastery of these skills by creating *
 
 > _Add the following tests within Article.test.js._
 
-- [ ] Build a test that shows the `Article` component, given the correct props, can render without errors.
-- [ ] Build a test that shows that when a correctly formatted article is passed into the `Article` component, the correct headline, author, summary and body are displayed.
-- [ ] The `Article` component should display "Associated Press" when an author attribute is not avalible. Build a test that verifies that that is true.
-- [ ] Build a test that show that when the deleteButton is pressed on an Article, the handleDelete functional property is executed.
+- [x ] Build a test that shows the `Article` component, given the correct props, can render without errors.
+- [x ] Build a test that shows that when a correctly formatted article is passed into the `Article` component, the correct headline, author, summary and body are displayed.
+- [x ] The `Article` component should display "Associated Press" when an author attribute is not avalible. Build a test that verifies that that is true.
+- [x ] Build a test that show that when the deleteButton is pressed on an Article, the handleDelete functional property is executed.
 
 ## Important Notes:
 
@@ -131,9 +131,16 @@ In this project, you will demonstrate your mastery of these skills by creating *
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. Add your answers below.
 
 1. Explain what a token is used for.
+   Tokens are unique keys that are used to authenticate users.
 
 2. What steps can you take in your web apps to keep your data secure?
+   Use privated routes for secure pages, use an authentication header.
 
 3. Describe how web servers work.
+   A web sever receives requests from the clients and send back packes of code based on the request.
 
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+   -CREATE : Post data
+   -READ : Get data
+   -UPDATE : Put data
+   -DELETE : Deletes data
