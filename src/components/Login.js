@@ -1,14 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import axios from 'axios';
+import { useHistory } from 'react-router';
+
 import styled from 'styled-components';
 
 const Login = () => {
+    const { push } = useHistory();
+    const [credentials, setCredentials] = useState({
+        username: '',
+        password: ''
+    });
+    const [error, setError] = useState('');
 
-    const handleChange = () => {
+    const handleChange = (event) => {
+        setCredentials({
+            ...credentials,
+            [event.target.name]: event.target.value
+        });
+        console.log(credentials);
+    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-    }
-    const handleSubmit = () => {
-
-    }
+        axios.post('http://localhost:5000/api/login', credentials)
+            .then(res => {
+                const { token } = res.data
+                localStorage.setItem('token', token);
+                push('/view');
+            })
+            .catch(err => {
+                console.log(err)
+                setError(err.response.data.error)
+            })
+    };
 
     return(<ComponentContainer>
         <ModalContainer>
@@ -32,6 +57,7 @@ const Login = () => {
                         type='password'
                         onChange={handleChange}
                        />
+                       <p id='error'>{error}</p>
                        <br/>
 
                     <Button id='submit'>Log In</Button>

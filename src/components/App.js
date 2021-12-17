@@ -7,22 +7,27 @@ import BloomHeader from './BloomHeader';
 import Login from './Login';
 import View from './View';
 import Logout from './Logout'
+import PrivateRoute from './PrivateRoute';
 
 const App = () => {
   return (
     <AppContainer>
       <BloomHeader/>
       <Header/>
+
       <RouteContainer>
         <Route exact path="/" >
-          <Login/>
+          <Login />
         </Route>
-        <Route exact path="/view" >
-          <View/>
-        </Route>
-        <Route exact path="/logout" >
-          <Logout/>
-        </Route>
+
+        <PrivateRoute exact path="/view" >
+          <View />
+        </PrivateRoute>
+
+        <PrivateRoute exact path="/logout" >
+          <Logout />
+        </PrivateRoute>
+
       </RouteContainer>
     </AppContainer>
   )
