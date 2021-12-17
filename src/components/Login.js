@@ -2,11 +2,41 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Login = () => {
-    
+
+    const handleChange = () => {
+
+    }
+    const handleSubmit = () => {
+
+    }
+
     return(<ComponentContainer>
         <ModalContainer>
             <h1>Welcome to Blogger Pro</h1>
-            <h2>Please enter your account information.</h2>
+           <FormGroup onSubmit={handleSubmit}>
+               <h2>Login</h2>
+               <div>
+                   <Label> Username </Label>
+                    <Input
+                        name='username'
+                        id='username'
+                        type='text'
+                        onChange={handleChange}
+                    />
+                 </div>
+                 <div>
+                   <Label> Password </Label>
+                       <Input
+                        name='password'
+                        id='password'
+                        type='password'
+                        onChange={handleChange}
+                       />
+                       <br/>
+
+                    <Button id='submit'>Log In</Button>
+                </div>
+           </FormGroup>
         </ModalContainer>
     </ComponentContainer>);
 }
